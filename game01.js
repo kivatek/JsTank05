@@ -115,7 +115,6 @@ var Shot = Class.create(Sprite, {
 	move: function() {
 		var x = this.x + this.vx;
 		var y = this.y + this.vy;
-		var moveOrRemove = true;
 		if (this.vx != 0) {
 			if (0 <= x && x < SCREEN_WIDTH-8) {
 				this.moveBy(this.vx, this.vy);
@@ -148,9 +147,7 @@ var Shot = Class.create(Sprite, {
 });
 
 function loadLevel(){
-	background = new Map(32, 32);
-	background.image = game.assets['js/images/tankmap.png'];
-	background.loadData([
+	backgroundMap = [
 		[0,0,0,0,0,0,0,0,0,0],
 		[0,1,1,0,0,0,0,1,1,0],
 		[0,1,0,0,0,1,0,0,1,0],
@@ -161,7 +158,11 @@ function loadLevel(){
 		[0,1,0,0,1,0,0,0,1,0],
 		[0,1,1,0,0,0,0,1,1,0],
 		[0,0,0,0,0,0,0,0,0,0]
-	]);
+	];
+	
+	background = new Map(32, 32);
+	background.image = game.assets['js/images/tankmap.png'];
+	background.loadData(backgroundMap);
 }
 
 window.onload = function() {
